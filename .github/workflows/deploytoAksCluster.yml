@@ -13,10 +13,10 @@ jobs:
     - name: Create ACR
       id: create-acr
       run: |
-        az acr create -n myAKSClustername -g myAKSClusternameb436-rg --location "East US" --sku Standard --admin-enabled
+        az acr create -n myaksclustername -g myaksclusternameb436-rg --location "East US" --sku Standard --admin-enabled
         echo "::set-output name=acr_username::`az acr credential show -n myAKSClustername --query username | xargs`"
         echo "::set-output name=acr_password::`az acr credential show -n myAKSClustername --query passwords[0].value | xargs`"
-        echo "::add-mask::`az acr credential show -n myAKSClustername --query passwords[0].value | xargs`"
+        echo "::add-mask::`az acr credential show -n myaksclustername --query passwords[0].value | xargs`"
 
     - uses: azure/docker-login@v1
       with:
